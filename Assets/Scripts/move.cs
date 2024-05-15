@@ -26,7 +26,7 @@ public class move : MonoBehaviour
         {
             return;
         }
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal1");
         
         if (Input.GetKeyDown(KeyCode.Joystick1Button2) && IsGrounded())
         {

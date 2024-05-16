@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3418766708914620197, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 975394442682792919, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -181,6 +185,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+    - {fileID: 6470998937561349781, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+    - {fileID: 2946887654567229188, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -488,6 +494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3418766708914620197, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.31
@@ -532,7 +542,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6470998937561349781, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+    - {fileID: 2946887654567229188, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -6,6 +6,7 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private float horizontal;
+    private float attackPower = 100f;
     private float speed = 10f;
     private float jumpingPower = 20f;
     private bool isFacingRight = true;
@@ -86,4 +87,18 @@ public class move : MonoBehaviour
         rb.gravityScale = originalGravity;
         isDashing = false;
     }
+       
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDashing)
+        {
+            Rigidbody2D otherRb = collision.gameObject.GetComponent<Rigidbody2D>();
+
+            if (otherRb != null && !collision.gameObject.CompareTag("Ground"))
+            {
+            UnityEngine.Vector2 forceDirection = collision.contacts[0].normal;
+            otherRb.AddForce(forceDirection * dashingPower * attackPower, ForceMode2D.Impulse);
+            }
+        }
+    } 
 }

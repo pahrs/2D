@@ -338,7 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2449d34629acad245943a15307bfa7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 10
+  moveSpeed: 2.5
+  cornerSpeedMultiplier: 0.5
 --- !u!198 &6470998937561349781
 ParticleSystem:
   m_ObjectHideFlags: 0

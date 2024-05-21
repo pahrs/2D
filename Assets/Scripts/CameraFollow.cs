@@ -1,26 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
-
 {
-    public Transform target1; // Referência ao primeiro GameObject
-    public Transform target2; // Referência ao segundo GameObject
-    public float minZoom = 40f; // Zoom mínimo da câmera (campo de visão maior)
-    public float maxZoom = 10f; // Zoom máximo da câmera (campo de visão menor)
-    public float zoomLimiter = 50f; // Limitador do zoom
+    public Transform[] targets; // Array de GameObjects (personagens)
+    public Transform centerPoint; // Centro fixo da tela
+    public float minDistance = 5f; // Distância mínima da câmera
+    public float maxDistance = 20f; // Distância máxima da câmera
+    public float zoomSpeed = 5f; // Velocidade de ajuste do zoom
 
     private Camera cam; // Referência à câmera
+    private float targetOrthographicSize; // Tamanho ortográfico alvo da câmera
 
     private void Start()
     {
         cam = GetComponent<Camera>();
+        targetOrthographicSize = cam.orthographicSize;
     }
 
     private void LateUpdate()
     {
-        if (target1 == null || target2 == null)
+        if (targets.Length == 0 || centerPoint == null)
             return;
 
         MoveCamera();
@@ -29,18 +28,38 @@ public class CameraFollow : MonoBehaviour
 
     void MoveCamera()
     {
-        // Calcula o ponto médio entre os dois GameObjects
-        Vector3 centerPoint = (target1.position + target2.position) / 2f;
+        // Calcula a média das posições dos personagens
+        Vector3 averagePosition = Vector3.zero;
+        foreach (Transform target in targets)
+        {
+            averagePosition += target.position;
+        }
+        averagePosition /= targets.Length;
 
+        // Define a posição do centro da tela na média das posições dos personagens
+        centerPoint.position = averagePosition;
     }
 
     void ZoomCamera()
     {
-        // Calcula a distância entre os dois GameObjects
-        float distance = Vector3.Distance(target1.position, target2.position);
+        // Calcula a distância máxima dos personagens em relação ao centro da tela
+        float maxDistanceToCenter = 0f;
+        foreach (Transform target in targets)
+        {
+            float distance = Vector3.Distance(target.position, centerPoint.position);
+            maxDistanceToCenter = Mathf.Max(maxDistanceToCenter, distance);
+        }
 
-        // Ajusta o campo de visão da câmera com base na distância
-        float desiredZoom = Mathf.Lerp(maxZoom, minZoom, distance / zoomLimiter);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, desiredZoom, Time.deltaTime);
+        // Calcula a distância normalizada entre minDistance e maxDistance
+        float normalizedDistance = Mathf.Clamp01((maxDistanceToCenter - minDistance) / (maxDistance - minDistance));
+
+        // Calcula o tamanho ortográfico alvo da câmera com base na distância normalizada
+        float targetSize = Mathf.Lerp(minDistance, maxDistance, normalizedDistance);
+
+        // Suaviza o ajuste do zoom da câmera
+        targetOrthographicSize = Mathf.Lerp(targetOrthographicSize, targetSize, Time.deltaTime * zoomSpeed);
+
+        // Define o tamanho ortográfico da câmera
+        cam.orthographicSize = targetOrthographicSize;
     }
 }

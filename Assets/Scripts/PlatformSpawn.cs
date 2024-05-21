@@ -26,7 +26,7 @@ public class PlatformSpawn : MonoBehaviour
                 GameObject prefabSelecionado = prefabs[Random.Range(0, prefabs.Length)];
 
                 
-                float posX = Random.Range(-10f, 10f);
+                float posX = Random.Range(7f, 70f);
 
                 
                 GameObject novaPlataforma = Instantiate(prefabSelecionado, new Vector3(posX, alturaMaxima, 0f), Quaternion.identity);

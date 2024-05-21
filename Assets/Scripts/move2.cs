@@ -7,6 +7,7 @@ public class move2 : MonoBehaviour
 {
     private float horizontal;
     private float speed = 10f;
+    private float attackPower = 1000f;
     private float jumpingPower = 20f;
     private bool isFacingRight = true;
 
@@ -79,12 +80,34 @@ public class move2 : MonoBehaviour
         isDashing = true; 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new UnityEngine.Vector2 (transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new UnityEngine.Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        dashAvailable = true;
+    }
+       
+    private void OnCollisionEnter(Collision collision)
+    {    
+        if (isDashing)
+        {
+
+            if (collision.gameObject.tag == "Hero")
+            {
+                Rigidbody2D heroRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+                if (heroRigidbody != null)
+                {
+                    UnityEngine.Vector2 forceDirection = (collision.transform.position - transform.position).normalized;
+                    forceDirection.x *= -1;
+                    forceDirection.y = Mathf.Abs(forceDirection.y); 
+                    Debug.Log("Force Direction: " + forceDirection);
+                    Debug.Log("Applying force to: " + collision.gameObject.name);
+                    heroRigidbody.AddForce(forceDirection * attackPower ,ForceMode2D.Impulse);
+                }
+            }
+        }
     }
 }
-

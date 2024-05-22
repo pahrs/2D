@@ -8,7 +8,7 @@ public class move : MonoBehaviour
     private float horizontal;
     private float attackPower = 10f;
     private float speed = 10f;
-    private float jumpingPower = 20f;
+    private float jumpingPower = 30f;
     private bool isFacingRight = true;
 
     private bool dashAvailable = true;

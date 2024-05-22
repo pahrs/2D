@@ -6,7 +6,7 @@ public class PlatformSpawn : MonoBehaviour
 {
     public string tagDoPrefab = "Ground"; 
     public float alturaMaxima = 6f; 
-    public float intervaloDeGeracao = 4f; 
+    public float intervaloDeGeracao = 2.5f; 
 
     public float timer; 
 

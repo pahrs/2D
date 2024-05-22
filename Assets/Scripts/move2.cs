@@ -7,8 +7,8 @@ public class move2 : MonoBehaviour
 {
     private float horizontal;
     private float speed = 10f;
-    private float attackPower = 1000f;
-    private float jumpingPower = 20f;
+    private float attackPower = 100f;
+    private float jumpingPower = 30f;
     private bool isFacingRight = true;
 
     private bool dashAvailable = true;
@@ -16,6 +16,12 @@ public class move2 : MonoBehaviour
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
+
+    private bool downDashAvailable = true;
+    private bool isDownDashing;
+    private float DownDashingPower = 24f;
+    private float DownDashingTime = 0.2f;
+    private float DownDashingCooldown = 1f;
 
     [SerializeField] private UnityEngine.Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -42,6 +48,10 @@ public class move2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Joystick2Button5) && dashAvailable)
         {
             StartCoroutine(Dash());
+        }
+        if(Input.GetKeyDown(KeyCode.Joystick2Button4) && downDashAvailable)
+        {
+            StartCoroutine(downDash());
         }
 
         Flip();
@@ -89,7 +99,21 @@ public class move2 : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         dashAvailable = true;
     }
-       
+    private IEnumerator downDash()
+    {
+        downDashAvailable = false;
+        isDownDashing = true;
+        rb.velocity = new UnityEngine.Vector2(0f, -DownDashingPower);
+        tr.emitting = true;
+        while (!IsGrounded())
+        {
+            yield return null;
+        }
+        tr.emitting = false;
+        isDownDashing = false;
+        downDashAvailable = true;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {    
         if (isDashing)

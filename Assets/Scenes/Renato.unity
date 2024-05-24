@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minutes: 2
+  additionalMinutes: 30
 --- !u!114 &811796029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,9 +539,10 @@ MonoBehaviour:
   - {fileID: 1394467880}
   - {fileID: 1893585151}
   centerPoint: {fileID: 1914334370}
-  minDistance: 13
-  maxDistance: 15
-  zoomSpeed: 1
+  minDistance: 13.5
+  maxDistance: 15.5
+  zoomSpeed: 0.5
+  focusThreshold: 30
 --- !u!1001 &988504355
 PrefabInstance:
   m_ObjectHideFlags: 0

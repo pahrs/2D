@@ -337,4 +337,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 50
-  cornerSpeedMultiplier: 0.05
+  cornerSpeedMultiplier: 0.5

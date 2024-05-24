@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WallRes : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Velocidade de movimento
+    public float moveSpeed = 50f; // Velocidade de movimento
     public float cornerSpeedMultiplier = 0.5f; // Multiplicador de velocidade ao mover para os cantos
 
     private Rigidbody2D rb; // Referência ao Rigidbody2D
@@ -29,10 +29,12 @@ public class WallRes : MonoBehaviour
         if (isMovingToCenter)
         {
             MoveToCenter();
+            moveSpeed = 50f;
         }
         else if (isMovingToRandomDirection)
         {
             MoveToRandomDirection();
+            moveSpeed = 25f;
         }
     }
 

@@ -13,14 +13,16 @@ public class timerEnd : MonoBehaviour
 {
 
     public int minutes = 2;
+    public int additionalMinutes = 30;
     private float seconds;
     private TextMeshProUGUI timerText;
     
     void Start()
     {
-        seconds = minutes * 60;
+        seconds = (minutes * 60) + additionalMinutes;
         timerText = GetComponent<TextMeshProUGUI>();
         UpdateTimerDisplay();
+    
     }
 
     
@@ -29,7 +31,7 @@ public class timerEnd : MonoBehaviour
         if(seconds > 0)
         {
             seconds -= Time.deltaTime;
-            UpdateTimerDisplay();
+            UpdateTimerDisplay(); 
         }
         else
         {
@@ -48,4 +50,5 @@ public class timerEnd : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }

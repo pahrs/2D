@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Cinemachine;
 
-public class move : MonoBehaviour
+public class Move : MonoBehaviour
 {
+    private static List<Move> allCharacters = new List<Move>();
+
     private float horizontal;
     private float attackPower = 10f;
     private float speed = 10f;
@@ -19,64 +22,68 @@ public class move : MonoBehaviour
 
     private bool downDashAvailable = true;
     private bool isDownDashing;
-    private float DownDashingPower = 24f;
-    private float DownDashingTime = 0.2f;
-    private float DownDashingCooldown = 1f;
-
-
-
+    private float downDashingPower = 24f;
+    private float downDashingTime = 0.2f;
+    private float downDashingCooldown = 1f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundlayer;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer tr;
+    [SerializeField] private CinemachineImpulseSource impulseSource;
 
-    void Update() 
+    private PlayerInput playerInput;
+    private Vector2 moveInput;
+
+    public delegate void DashHandler(Move dasher);
+    public static event DashHandler OnDashStarted;
+    public static event DashHandler OnDashEnded;
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        Jump();
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        Dash();
+    }
+
+    public void OnDownDash(InputAction.CallbackContext context)
+    {
+        DownDash();
+    }
+
+    private void Update()
     {
         if (isDashing)
         {
             return;
         }
-        float verticalInput = Input.GetAxis("Vertical1");
-        horizontal = Input.GetAxisRaw("Horizontal1");
-        
-        
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && IsGrounded())
-        {
-            rb.velocity = new UnityEngine.Vector2(rb.velocity.x, jumpingPower);
-        }
 
-        if (Input.GetKeyUp(KeyCode.Joystick1Button2) && rb.velocity.y > 0f)
-        {
-            rb.velocity = new UnityEngine.Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Joystick1Button5) && dashAvailable)
-        {
-            StartCoroutine(Dash());
-        }
-         if (Input.GetKeyDown(KeyCode.Joystick1Button4) && !IsGrounded())
-        {
-            StartCoroutine (downDash());
-        }
-        
+        horizontal = moveInput.x;
 
         Flip();
-    }   
+    }
 
     private void FixedUpdate()
-    {  
+    {
         if (isDashing)
         {
             return;
         }
-        
-        rb.velocity = new UnityEngine.Vector2(horizontal * speed, rb.velocity.y);
+
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     private void Flip()
@@ -84,60 +91,102 @@ public class move : MonoBehaviour
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
-            UnityEngine.Vector3 localScale = transform.localScale;
+            Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
     }
 
-    private IEnumerator Dash()
+    private void Jump()
+    {
+        if (IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+    }
+
+    private void Dash()
+    {
+        if (dashAvailable)
+        {
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    private IEnumerator DashCoroutine()
     {
         dashAvailable = false;
-        isDashing = true; 
+        isDashing = true;
+        
+        OnDashStarted?.Invoke(this);
+
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new UnityEngine.Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
+        
+        impulseSource.GenerateImpulse();
+
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+
+        OnDashEnded?.Invoke(this);
+
         yield return new WaitForSeconds(dashingCooldown);
         dashAvailable = true;
     }
-    private IEnumerator downDash()
-    {
-    downDashAvailable = false;
-    isDownDashing = true; 
-    rb.velocity = new UnityEngine.Vector2(0f, -DownDashingPower);
-    tr.emitting = true;
-    while (!IsGrounded())
-    {
-    yield return null;   
-    }
-    tr.emitting = false;
-    isDownDashing = false;
-    downDashAvailable = true;
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void DownDash()
     {
-        if (isDashing)
+        if (!IsGrounded())
         {
-            if (collision.gameObject.tag == "Hero")
-            {
-                Rigidbody2D heroRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+            StartCoroutine(DownDashCoroutine());
+        }
+    }
 
-                if (heroRigidbody != null)
-                {
-                    UnityEngine.Vector2 forceDirection = (collision.transform.position - transform.position).normalized;
-                    forceDirection.x = -1;
-                    forceDirection.y = Mathf.Abs(forceDirection.y); 
-                    Debug.Log("Force Direction" + forceDirection);
-                    heroRigidbody.AddForce(forceDirection * attackPower, ForceMode2D.Impulse);
-                }
+    private IEnumerator DownDashCoroutine()
+    {
+        downDashAvailable = false;
+        isDownDashing = true;
+        rb.velocity = new Vector2(0f, -downDashingPower);
+        tr.emitting = true;
+        while (!IsGrounded())
+        {
+            yield return null;
+        }
+        tr.emitting = false;
+        isDownDashing = false;
+        downDashAvailable = true;
+    }
+
+    public static void ApplyDashImpact(Move dasher)
+    {
+        foreach (Move character in allCharacters)
+        {
+            if (character != dasher)
+            {
+                character.ApplyKnockback(dasher);
             }
         }
     }
-}
 
+    public void ApplyKnockback(Move attacker)
+    {
+        Vector2 forceDirection = (transform.position - attacker.transform.position).normalized;
+        forceDirection.x = 1; 
+        forceDirection.y = Mathf.Abs(forceDirection.y);
+        rb.AddForce(forceDirection * attackPower, ForceMode2D.Impulse);
+    }
+
+    private void OnEnable()
+    {
+        OnDashStarted += ApplyDashImpact;
+    }
+
+    private void OnDisable()
+    {
+        OnDashStarted -= ApplyDashImpact;
+    }
+}

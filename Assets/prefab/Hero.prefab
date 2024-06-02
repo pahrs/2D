@@ -212,8 +212,9 @@ MonoBehaviour:
   groundCheck: {fileID: 975394442682792919}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   tr: {fileID: 6815857594235245279}
+  impulseSource: {fileID: 4478160885951858753}
 --- !u!96 &6815857594235245279
 TrailRenderer:
   serializedVersion: 3
@@ -416,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 93b182172cc44b74ca04610c97ff4c79, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -429,27 +430,71 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8244143733848755265}
+        m_TargetAssemblyTypeName: Move, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 67816330-e597-4e5f-bff7-4a72db6d1c53
     m_ActionName: Player/Movement
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8244143733848755265}
+        m_TargetAssemblyTypeName: Move, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b56d9c8a-e3f2-448d-a39f-c201f466558f
     m_ActionName: Player/Jump
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8244143733848755265}
+        m_TargetAssemblyTypeName: Move, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f2b5939b-5475-49c8-a19a-153fdcdb5e62
     m_ActionName: Player/Dash
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8244143733848755265}
+        m_TargetAssemblyTypeName: Move, Assembly-CSharp
+        m_MethodName: OnDownDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 278d8c09-f800-416e-9e2e-4031dfff6ecf
     m_ActionName: Player/DownDash
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 53179a9c-3040-409a-b58c-eeed01d72117
-    m_ActionName: Player/Start
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller 1
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

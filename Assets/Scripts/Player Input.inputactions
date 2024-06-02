@@ -49,7 +49,29 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PS Controller",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e039e640-73ee-4b4a-8c30-e653d85cac56",
+                    "path": "<HID::USB gamepad           >/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick (Nintendo)",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "634927ba-e522-45fe-83c0-3a66181ad7f3",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -60,7 +82,29 @@
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PS Controller",
+                    "action": "DownDash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1dd1b043-2410-43c1-9e80-6321c9fc554e",
+                    "path": "<HID::USB gamepad           >/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick (Nintendo)",
+                    "action": "DownDash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5eda77d4-a0fa-4f4e-88eb-abc0e264b4ad",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "DownDash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -71,10 +115,54 @@
                     "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PS Controller",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "396a8397-1162-41e3-b57e-0d0c1d32d99f",
+                    "path": "<HID::USB gamepad           >/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick (Nintendo)",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "A/D",
+                    "id": "8e28a7cb-1b63-4467-ac67-28cf17c7cebd",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "29bb9ecb-00e8-4773-ae67-eb80583ae786",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6b25e7ef-fa10-423a-a29c-b2b58395f79c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -82,7 +170,29 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PS Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9cc59a66-823b-4fd2-bbb3-b64eea74d953",
+                    "path": "<HID::USB gamepad           >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick (Nintendo)",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca1d6755-5ae4-4a85-9f72-ab4e5c0227ad",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -90,5 +200,39 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "PS Controller",
+            "bindingGroup": "PS Controller",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Joystick (Nintendo)",
+            "bindingGroup": "Joystick (Nintendo)",
+            "devices": [
+                {
+                    "devicePath": "<HID::USB gamepad           >",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

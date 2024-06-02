@@ -9,9 +9,9 @@ public class Move : MonoBehaviour
     private static List<Move> allCharacters = new List<Move>();
 
     private float horizontal;
-    private float attackPower = 10f;
+    private float attackPower = 15f;
     private float speed = 10f;
-    private float jumpingPower = 20f;
+    private float jumpingPower = 30f;
     private bool isFacingRight = true;
 
     private bool dashAvailable = true;
@@ -35,9 +35,23 @@ public class Move : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 moveInput;
 
+    private Vector2 knockback;
+    private float knockbackDuration = 0.5f;
+    private float knockbackTimer;
+
     public delegate void DashHandler(Move dasher);
     public static event DashHandler OnDashStarted;
     public static event DashHandler OnDashEnded;
+
+    private void Awake()
+    {
+        allCharacters.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        allCharacters.Remove(this);
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -78,7 +92,15 @@ public class Move : MonoBehaviour
             return;
         }
 
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        if (knockbackTimer > 0)
+        {
+            rb.velocity = knockback;
+            knockbackTimer -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
     }
 
     private bool IsGrounded()
@@ -177,7 +199,8 @@ public class Move : MonoBehaviour
         Vector2 forceDirection = (transform.position - attacker.transform.position).normalized;
         forceDirection.x = 1; 
         forceDirection.y = Mathf.Abs(forceDirection.y);
-        rb.AddForce(forceDirection * attackPower, ForceMode2D.Impulse);
+        knockback = forceDirection * attackPower;
+        knockbackTimer = knockbackDuration;
     }
 
     private void OnEnable()

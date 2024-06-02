@@ -280,7 +280,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &799022912
+--- !u!1001 &606228842
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -288,6 +288,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Joystick (Nintendo)
+      objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -450,7 +454,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1907492174
+--- !u!1001 &2089637693
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -458,9 +462,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Joystick (Nintendo)
+      objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -501,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 4473357437720020682, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -585,5 +597,5 @@ SceneRoots:
   - {fileID: 1448563637}
   - {fileID: 347806360}
   - {fileID: 1482232121}
-  - {fileID: 1907492174}
-  - {fileID: 799022912}
+  - {fileID: 2089637693}
+  - {fileID: 606228842}

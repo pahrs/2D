@@ -11,7 +11,7 @@ public class Move : MonoBehaviour
     private float horizontal;
     private float attackPower = 15f;
     private float speed = 10f;
-    private float jumpingPower = 30f;
+    private float jumpingPower = 20f;
     private bool isFacingRight = true;
 
     private bool dashAvailable = true;
@@ -25,6 +25,7 @@ public class Move : MonoBehaviour
     private float downDashingPower = 24f;
     private float downDashingTime = 0.2f;
     private float downDashingCooldown = 1f;
+    private bool debuffed = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -38,6 +39,7 @@ public class Move : MonoBehaviour
     private Vector2 knockback;
     private float knockbackDuration = 0.5f;
     private float knockbackTimer;
+    private Coroutine debuffCoroutine;
 
     public delegate void DashHandler(Move dasher);
     public static event DashHandler OnDashStarted;
@@ -183,33 +185,46 @@ public class Move : MonoBehaviour
         downDashAvailable = true;
     }
 
-    public static void ApplyDashImpact(Move dasher)
-    {
-        foreach (Move character in allCharacters)
-        {
-            if (character != dasher)
-            {
-                character.ApplyKnockback(dasher);
-            }
-        }
-    }
-
     public void ApplyKnockback(Move attacker)
     {
         Vector2 forceDirection = (transform.position - attacker.transform.position).normalized;
-        forceDirection.x = 1; 
+        forceDirection.x = forceDirection.x > 0 ? 1 : -1; 
         forceDirection.y = Mathf.Abs(forceDirection.y);
         knockback = forceDirection * attackPower;
         knockbackTimer = knockbackDuration;
+
+        if (attacker.debuffed)
+        {
+            ApplyDebuff();
+        }
     }
 
-    private void OnEnable()
+    private void ApplyDebuff()
     {
-        OnDashStarted += ApplyDashImpact;
+        if (debuffCoroutine != null)
+        {
+            StopCoroutine(debuffCoroutine);
+        }
+        debuffed = true;
+        debuffCoroutine = StartCoroutine(DebuffCoroutine());
     }
 
-    private void OnDisable()
+    private IEnumerator DebuffCoroutine()
     {
-        OnDashStarted -= ApplyDashImpact;
+        yield return new WaitForSeconds(4f);
+        if (debuffed)
+        {
+            rb.velocity = new Vector2(-50f, 0); // Example of falling off the map
+        }
+        debuffed = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Move otherCharacter = collision.gameObject.GetComponent<Move>();
+        if (otherCharacter != null && isDashing)
+        {
+            otherCharacter.ApplyKnockback(this);
+        }
     }
 }

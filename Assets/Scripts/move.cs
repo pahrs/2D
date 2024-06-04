@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using Unity.Mathematics;
+using System;
 
 public class Move : MonoBehaviour
 {
     private static List<Move> allCharacters = new List<Move>();
+
+    public Animator animator;
 
     private float horizontal;
     private float attackPower = 15f;

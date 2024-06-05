@@ -10,11 +10,14 @@ public class WallRes : MonoBehaviour
     private bool isMovingToCenter = false; // Indicador de movimento para o centro
     private bool isMovingToRandomDirection = false; // Indicador de movimento para uma direção aleatória
     private Vector2 targetPosition; // Posição alvo
+    public GameObject bubble;
+    private SpriteRenderer bubbleSpriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Obtém o Rigidbody2D
         collider = GetComponent<Collider2D>(); // Obtém o Collider2D
+        bubbleSpriteRenderer = bubble.GetComponent<SpriteRenderer>(); // Obtém o SpriteRenderer
     }
 
     void Update()
@@ -24,17 +27,21 @@ public class WallRes : MonoBehaviour
             isMovingToRandomDirection = false;
             rb.gravityScale = 1f; // Reativa a gravidade
             collider.enabled = true; // Reativa o collider
+            bubbleSpriteRenderer.enabled = false;
+            
         }
 
         if (isMovingToCenter)
         {
             MoveToCenter();
             moveSpeed = 50f;
+            bubbleSpriteRenderer.enabled = true;
         }
         else if (isMovingToRandomDirection)
         {
             MoveToRandomDirection();
             moveSpeed = 25f;
+            bubbleSpriteRenderer.enabled = true;
         }
     }
 

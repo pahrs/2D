@@ -8,6 +8,8 @@ public class PlatformSpawn : MonoBehaviour
     public string tagDoPrefab = "Ground"; 
     public float alturaMaxima = 6f; 
     public float intervaloDeGeracao = 2.5f; 
+    public float rangeXMin = -8f;
+    public float rangeXMax = 8f;
 
     public float timer; 
 
@@ -27,7 +29,7 @@ public class PlatformSpawn : MonoBehaviour
                 GameObject prefabSelecionado = prefabs[Random.Range(0, prefabs.Length)];
 
                 
-                float posX = Random.Range(7f, 70f);
+                float posX = Random.Range(rangeXMin, rangeXMax);
 
                 
                 GameObject novaPlataforma = Instantiate(prefabSelecionado, new Vector3(posX, alturaMaxima, 0f), Quaternion.identity);

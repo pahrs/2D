@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,28 +31,30 @@ public class ligthHero : MonoBehaviour
 
         if(isActive) 
         {
-            tempoDecorrido = 0f;
-            Debug.Log(tempoDecorrido);
             tempoDecorrido += Time.deltaTime;
 
-            Color cor = imagem.color;
-            cor.a = opacidadeFinal;
-            imagem.color = cor;
-
-            if(tempoDecorrido >= duracao)
+            if (tempoDecorrido <= duracao)
             {
-
+                Color cor = imagem.color;
+                cor.a = Mathf.Lerp(opacidadeInicial, opacidadeFinal, tempoDecorrido / duracao);
+                imagem.color = cor;
+            }
+            else
+            {
+                isActive = false; // Desativa isActive após a duração
             }
         }
-
-
-        if(!isActive)
+        else
         {
             Color cor = imagem.color;
             cor.a = opacidadeInicial;
             imagem.color = cor;
-        }  
+        }
     }
 }
 
+        
+    
+
+    
 

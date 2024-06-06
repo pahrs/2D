@@ -17,12 +17,12 @@ public class timerEnd : MonoBehaviour
     public int additionalMinutes = 30;
     private float seconds;
     private TextMeshProUGUI timerText;
-    public ligthHero ligthHero;
+    public lightHero lightHero;
     public potatoFire potatoFire;
     private bool eventOneTriggered = false;
     private bool eventSecondTriggered = false;
     public float timeToEventOne = 10f;
-    public float timeToEventTwo = 10f;
+    public float timeToEventTwo = 40f;
 
     void Start()
     {
@@ -76,7 +76,7 @@ public class timerEnd : MonoBehaviour
         // Randomly choose between lightHero and potatoFire
         if (UnityEngine.Random.Range(0, 2) == 0)
         {
-            ligthHero.Activate();
+            lightHero.Activate();
         }
         else
         {
@@ -92,7 +92,7 @@ public class timerEnd : MonoBehaviour
         if (eventOneTriggered)
         {
             // If lightHero was chosen for EventOne, choose potatoFire for EventSecond and vice versa
-            if (ligthHero == null || potatoFire == null)
+            if (lightHero == null || potatoFire == null)
             {
                 Debug.LogError("lightHero or potatoFire is not assigned!");
                 return;
@@ -100,7 +100,7 @@ public class timerEnd : MonoBehaviour
 
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
-                if (ligthHero != null) ligthHero.Activate();
+                if (lightHero != null) lightHero.Activate();
             }
             else
             {

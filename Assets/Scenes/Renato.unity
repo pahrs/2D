@@ -549,8 +549,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4473357437720020682, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 537889692}
   m_SourcePrefab: {fileID: 100100000, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+--- !u!1 &537889691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4473357437720020682, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+  m_PrefabInstance: {fileID: 537889690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &537889692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537889691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &785340033
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +833,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minutes: 2
   additionalMinutes: 30
+  ligthHero: {fileID: 0}
+  potatoFire: {fileID: 0}
+  timeToEventOne: 10
+  timeToEventTwo: 10
 --- !u!114 &811796029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2250,8 @@ MonoBehaviour:
   tagDoPrefab: Ground
   alturaMaxima: 36
   intervaloDeGeracao: 4
+  rangeXMin: -8
+  rangeXMax: 8
   timer: 0
 --- !u!4 &1814929711
 Transform:

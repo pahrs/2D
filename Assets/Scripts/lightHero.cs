@@ -7,7 +7,7 @@ public class ligthHero : MonoBehaviour
     public GameObject[] players;
     public Image imagem;
     public float opacidadeInicial = 0f;
-    public float opacidadeFinal = 1f;
+    public float opacidadeFinal = 0.8f;
     public bool isActive;
 
     public float tempoDecorrido = 0f;
@@ -56,7 +56,7 @@ public class ligthHero : MonoBehaviour
 
      public void Activate()
     {
-        Debug.Log("lightHero activated!");
+        isActive = true;
     }
 }
 

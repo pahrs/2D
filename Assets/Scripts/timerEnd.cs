@@ -16,7 +16,8 @@ public class timerEnd : MonoBehaviour
     public int additionalMinutes = 30;
     private float seconds;
     private TextMeshProUGUI timerText;
-    
+
+    public GameObject[] events;   
     void Start()
     {
         seconds = (minutes * 60) + additionalMinutes;

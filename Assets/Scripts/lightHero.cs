@@ -17,6 +17,8 @@ public class ligthHero : MonoBehaviour
     private void Start()
     {
 
+        isActive = false;
+
         if (imagem != null)
         {
             Color cor = imagem.color;
@@ -50,6 +52,11 @@ public class ligthHero : MonoBehaviour
             cor.a = opacidadeInicial;
             imagem.color = cor;
         }
+    }
+
+     public void Activate()
+    {
+        Debug.Log("lightHero activated!");
     }
 }
 

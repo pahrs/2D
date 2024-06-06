@@ -1,67 +1,61 @@
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ligthHero : MonoBehaviour
+public class lightHero : MonoBehaviour
 {
-    public GameObject[] players;
-    public Image imagem;
-    public float opacidadeInicial = 0f;
-    public float opacidadeFinal = 0.8f;
     public bool isActive;
-
     public float tempoDecorrido = 0f;
     public float duracao = 20f;
 
+    public GameObject lightGlobal;
+    public GameObject LightHero1;
+    public GameObject lightHero2;
 
     private void Start()
     {
-
         isActive = false;
-
-        if (imagem != null)
-        {
-            Color cor = imagem.color;
-
-            cor.a = opacidadeInicial;
-
-            imagem.color = cor;
-        }
+        DeactivateLights();
     }
+
     void Update()
     {
-
-        if(isActive) 
+        if (isActive)
         {
             tempoDecorrido += Time.deltaTime;
 
             if (tempoDecorrido <= duracao)
             {
-                Color cor = imagem.color;
-                cor.a = Mathf.Lerp(opacidadeInicial, opacidadeFinal, tempoDecorrido / duracao);
-                imagem.color = cor;
+                ActivateLights();
             }
             else
             {
-                isActive = false; // Desativa isActive após a duração
+                isActive = false;
+                tempoDecorrido = 0f; // Reset o tempo decorrido
+                DeactivateLights();
             }
         }
         else
         {
-            Color cor = imagem.color;
-            cor.a = opacidadeInicial;
-            imagem.color = cor;
+            DeactivateLights();
         }
     }
 
-     public void Activate()
+    public void Activate()
     {
         isActive = true;
+        tempoDecorrido = 0f; // Reset o tempo decorrido ao ativar
+    }
+
+    private void ActivateLights()
+    {
+        lightGlobal.SetActive(true);
+        LightHero1.SetActive(true);
+        lightHero2.SetActive(true);
+    }
+
+    private void DeactivateLights()
+    {
+        lightGlobal.SetActive(false);
+        LightHero1.SetActive(false);
+        lightHero2.SetActive(false);
     }
 }
-
-        
-    
-
-    
-

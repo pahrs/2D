@@ -8,8 +8,11 @@ public class Coins : MonoBehaviour
     {
         if (collision.gameObject.tag == "Coin")
         {
+            if (collision.gameObject != null)
+            {
             Destroy(collision.gameObject); 
             CoinManager.instance.AddCoins(playerIndex, 10); 
+            }
         }
     }
 }

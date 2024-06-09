@@ -66,10 +66,7 @@ public class WallRes : MonoBehaviour
         if ((Vector2)transform.position == targetPosition)
         {
             isMovingToCenter = true;
-            isMovingToRandomDirection = false;
-            rb.gravityScale = 1f; 
-            collider.enabled = true;
-            rb.mass = 1; 
+            isMovingToRandomDirection = false; 
         }
     }
 

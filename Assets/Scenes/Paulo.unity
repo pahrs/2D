@@ -1052,6 +1052,34 @@ PrefabInstance:
       value: Player/Bubble[/Keyboard/space,/USB gamepad           /button2,/USB gamepad          
         1/button2]
       objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1264287975}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WallRes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: -3418766708914620197, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: bubble
       value: 
@@ -1118,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_Size.y
-      value: 0.96022844
+      value: 0.9478755
       objectReference: {fileID: 0}
     - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_Offset.x
@@ -1126,7 +1154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_Offset.y
-      value: -0.019885778
+      value: -0.013709307
       objectReference: {fileID: 0}
     - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -2500,6 +2528,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40362577e3193614b92bee06e0bf56f1, type: 3}
+--- !u!114 &1264287975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3418766708914620197, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+  m_PrefabInstance: {fileID: 534847588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2449d34629acad245943a15307bfa7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1264287981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
@@ -4222,6 +4261,34 @@ PrefabInstance:
       value: Player/Bubble[/Keyboard/space,/USB gamepad           /button2,/USB gamepad          
         1/button2]
       objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1844355545}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WallRes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -7328207099581031891, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: -3418766708914620197, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: bubble
       value: 
@@ -4278,6 +4345,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.54236865
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.94954324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.015963912
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.006699443
+      objectReference: {fileID: 0}
     - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: speed
       value: 8
@@ -4310,6 +4393,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
   m_PrefabInstance: {fileID: 1844355539}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1844355545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3418766708914620197, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+  m_PrefabInstance: {fileID: 1844355539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2449d34629acad245943a15307bfa7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1916919649
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: -6904131627291926292}
   - component: {fileID: -7328207099581031891}
   - component: {fileID: 4478160885951858753}
+  - component: {fileID: 2799288893334918227}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -208,6 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a449683da3c25468916eb3d5195185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  speed: 10
+  jumpingPower: 20
+  dashingPower: 24
+  dashingTime: 0.2
   rb: {fileID: 1699911581248276727}
   groundCheck: {fileID: 975394442682792919}
   groundLayer:
@@ -342,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   cornerSpeedMultiplier: 0.5
+  bubble: {fileID: 0}
 --- !u!108 &-6904131627291926292
 Light:
   m_ObjectHideFlags: 0
@@ -551,3 +558,16 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &2799288893334918227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473357437720020682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c8d17f7d1583e4b89d83cd76c9a8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0

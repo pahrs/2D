@@ -18,11 +18,12 @@ public class Move : MonoBehaviour
     public float jumpingPower = 20f;
     private bool isFacingRight = true;
 
-    private bool dashAvailable = true;
+    public bool dashAvailable = true;
     private bool isDashing;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
+    public bool dashAvailableUltra = true;
 
     private bool downDashAvailable = true;
     private bool isDownDashing;
@@ -231,4 +232,5 @@ public class Move : MonoBehaviour
             otherCharacter.ApplyKnockback(this);
         }
     }
+
 }

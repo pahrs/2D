@@ -77,7 +77,6 @@ public class WallRes : MonoBehaviour
         targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10f));
         isMovingToRandomDirection = true;
         collider.enabled = false; 
-        rb.mass = 0;
     }
 
     bool IsVisible()

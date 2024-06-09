@@ -1,57 +1,56 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WallRes : MonoBehaviour
 {
-    public float moveSpeed = 50f; // Velocidade de movimento
-    public float cornerSpeedMultiplier = 0.5f; // Multiplicador de velocidade ao mover para os cantos
+    public float moveSpeed = 5f;
+    public float cornerSpeedMultiplier = 0.5f; 
 
-    private Rigidbody2D rb; // Referência ao Rigidbody2D
-    private new Collider2D collider; // Referência ao Collider2D
-    private bool isMovingToCenter = false; // Indicador de movimento para o centro
-    private bool isMovingToRandomDirection = false; // Indicador de movimento para uma direção aleatória
-    private Vector2 targetPosition; // Posição alvo
+    private PlayerInput playerInput;
+
+    private Rigidbody2D rb; 
+    private new Collider2D collider;
+    private bool isMovingToCenter = false; 
+    private bool isMovingToRandomDirection = false;
+    private Vector2 targetPosition; 
     public GameObject bubble;
     private SpriteRenderer bubbleSpriteRenderer;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Obtém o Rigidbody2D
-        collider = GetComponent<Collider2D>(); // Obtém o Collider2D
-        bubbleSpriteRenderer = bubble.GetComponent<SpriteRenderer>(); // Obtém o SpriteRenderer
+        rb = GetComponent<Rigidbody2D>(); 
+        collider = GetComponent<Collider2D>(); 
+        bubbleSpriteRenderer = bubble.GetComponent<SpriteRenderer>(); 
     }
-
+    public void OnBubble(InputAction.CallbackContext context)
+    {
+        quitBubble();
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isMovingToRandomDirection = false;
-            rb.gravityScale = 1f; // Reativa a gravidade
-            collider.enabled = true; // Reativa o collider
-            bubbleSpriteRenderer.enabled = false;
-            
-        }
 
         if (isMovingToCenter)
         {
             MoveToCenter();
-            moveSpeed = 50f;
+            moveSpeed = 5f;
             bubbleSpriteRenderer.enabled = true;
         }
         else if (isMovingToRandomDirection)
         {
             MoveToRandomDirection();
-            moveSpeed = 25f;
+            moveSpeed = 5f;
             bubbleSpriteRenderer.enabled = true;
         }
+
+        
+        CheckIfOutOfCameraBounds();
     }
 
     void MoveToCenter()
     {
-        // Movendo o herói para o centro da tela
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        rb.gravityScale = 0f; // Desativa a gravidade
+        rb.gravityScale = 0f; 
 
-        // Verificar se o herói já está no centro
         if ((Vector2)transform.position == targetPosition)
         {
             isMovingToCenter = false;
@@ -61,41 +60,50 @@ public class WallRes : MonoBehaviour
 
     void MoveToRandomDirection()
     {
-        // Movendo o herói para uma direção aleatória
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        rb.gravityScale = 0f; // Desativa a gravidade
+        rb.gravityScale = 0f; 
 
-        // Verificar se o herói já chegou à posição aleatória
         if ((Vector2)transform.position == targetPosition)
         {
             isMovingToCenter = true;
             isMovingToRandomDirection = false;
-            rb.gravityScale = 1f; // Reativa a gravidade
-            collider.enabled = true; // Reativa o collider
+            rb.gravityScale = 1f; 
+            collider.enabled = true;
+            rb.mass = 1; 
         }
     }
 
     void ChooseRandomDirection()
     {
-        // Escolhe uma direção aleatória para mover
         float x = Random.Range(0f, Screen.width);
         float y = Random.Range(0f, Screen.height);
         targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10f));
         isMovingToRandomDirection = true;
-        collider.enabled = false; // Desativa o collider temporariamente
+        collider.enabled = false; 
+        rb.mass = 0;
     }
 
     bool IsVisible()
     {
-        // Verifica se o herói está visível na tela
         Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
         return viewportPosition.x >= 0 && viewportPosition.x <= 1 && viewportPosition.y >= 0 && viewportPosition.y <= 1;
     }
 
-    void OnBecameInvisible()
+    void CheckIfOutOfCameraBounds()
     {
-        // Quando o herói sai da tela, move para o centro
-        targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10f));
-        isMovingToCenter = true;
+        Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
+        if (viewportPosition.x < 0|| viewportPosition.x > 1 || viewportPosition.y < 0)
+        {
+            targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10f));
+            isMovingToCenter = true;
+        }
+    }
+
+    void quitBubble()
+    {
+        isMovingToRandomDirection = false;
+        rb.gravityScale = 4f; 
+        collider.enabled = true; 
+        bubbleSpriteRenderer.enabled = false;
     }
 }

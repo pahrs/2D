@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Bubble",
+                    "type": "Button",
+                    "id": "424ac80b-cbc1-48b3-aecf-f0c55f53c72e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -194,6 +203,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef0b6346-1d3a-4e86-86b7-eb573f8acbe7",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Bubble",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd9c66ed-4c29-4298-a543-098fe9b5a44e",
+                    "path": "<HID::USB gamepad           >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick (Nintendo)",
+                    "action": "Bubble",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

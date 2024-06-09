@@ -14,14 +14,14 @@ public class Move : MonoBehaviour
 
     private float horizontal;
     private float attackPower = 15f;
-    private float speed = 10f;
-    private float jumpingPower = 20f;
+    public float speed = 10f;
+    public float jumpingPower = 20f;
     private bool isFacingRight = true;
 
     private bool dashAvailable = true;
     private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
     private bool downDashAvailable = true;
@@ -41,7 +41,7 @@ public class Move : MonoBehaviour
     private Vector2 moveInput;
 
     private Vector2 knockback;
-    private float knockbackDuration = 0.5f;
+    private float knockbackDuration = 0.3f;
     private float knockbackTimer;
     private Coroutine debuffCoroutine;
 

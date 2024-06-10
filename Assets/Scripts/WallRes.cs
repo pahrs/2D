@@ -16,6 +16,7 @@ public class WallRes : MonoBehaviour
     public GameObject bubble;
     private SpriteRenderer bubbleSpriteRenderer;
     private float timeRemaining = 120f; 
+    public bool onBubble;
 
     void Start()
     {
@@ -99,11 +100,11 @@ public class WallRes : MonoBehaviour
         {
             targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10f));
             isMovingToCenter = true;
-
-            if (collider.enabled == true)
+            if (onBubble == false)
             {
                 CoinCount.instance.RemoveHalfCoins(playerIndex);
             }
+            onBubble = true;
         }
     }
 
@@ -113,6 +114,7 @@ public class WallRes : MonoBehaviour
         rb.gravityScale = 4f; 
         collider.enabled = true; 
         bubbleSpriteRenderer.enabled = false;
+        onBubble = false;
     }
 
     IEnumerator TimeCountdown()
@@ -124,5 +126,16 @@ public class WallRes : MonoBehaviour
         }
 
         this.enabled = false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Coin")
+        {
+            if ((collision.gameObject != null)&&!onBubble)
+            {
+            Destroy(collision.gameObject); 
+            CoinCount.instance.AddCoins(playerIndex, 10); 
+            }
+        }
     }
 }

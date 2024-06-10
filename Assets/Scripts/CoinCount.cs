@@ -44,7 +44,7 @@ public class CoinCount : MonoBehaviour
     {
         if (playerIndex >= 0 && playerIndex < coinCount.Length)
         {
-            coinCount[playerIndex] = Mathf.Max(coinCount[playerIndex] / 2, 0);
+            coinCount[playerIndex] = Mathf.Max(coinCount[playerIndex] - 15, 0);
             Debug.Log("Player " + playerIndex + " Lost Half Coins: " + coinCount[playerIndex]);
             OnCoinsChanged?.Invoke(); 
         }

@@ -38,6 +38,11 @@ public class Move : MonoBehaviour
     [SerializeField] private TrailRenderer tr;
     [SerializeField] private CinemachineImpulseSource impulseSource;
 
+    // Audio
+    [SerializeField] private AudioSource audioSource; // Adicione o AudioSource
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip dashSound;
+
     private PlayerInput playerInput;
     private Vector2 moveInput;
 
@@ -131,6 +136,7 @@ public class Move : MonoBehaviour
         if (IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            PlaySound(jumpSound); // Renato som pulo
         }
     }
 
@@ -153,8 +159,9 @@ public class Move : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
-        
+
         impulseSource.GenerateImpulse();
+        PlaySound(dashSound); // Renato som dash
 
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
@@ -233,4 +240,11 @@ public class Move : MonoBehaviour
         }
     }
 
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
 }

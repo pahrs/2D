@@ -1,14 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
-public class Scoreboard : MonoBehaviour
+public class ScoreBoard : MonoBehaviour
 {
-    public Text[] playerCoinsTexts; // Referências aos componentes de texto para cada jogador
+    public TMP_Text[] playerCoinsTexts; // Referências aos componentes de texto TextMeshPro para cada jogador
 
     void Start()
     {
-        // Inicializa os textos com as moedas iniciais
-        UpdateScoreboard();
+        UpdateScoreboard(); // Inicializa os textos com as moedas iniciais
     }
 
     void OnEnable()

@@ -8,11 +8,16 @@ public class mainMenu : MonoBehaviour
 {
     public void playButton()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Paulo");
     }
 
     public void quitButton()
     {
         Application.Quit();
+    }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

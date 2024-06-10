@@ -14,6 +14,11 @@ public class CoinCount : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            for (int i = 0; i < coinCount.Length; i++)
+            {
+                coinCount[i] = 0;
+            }
         }
         else
         {

@@ -9,7 +9,7 @@ public class WallRes : MonoBehaviour
     public int playerIndex; 
     private PlayerInput playerInput;
     private Rigidbody2D rb; 
-    private new Collider2D collider;
+    public new Collider2D collider;
     private bool isMovingToCenter = false; 
     private bool isMovingToRandomDirection = false;
     private Vector2 targetPosition; 
@@ -97,10 +97,13 @@ public class WallRes : MonoBehaviour
         Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
         if (viewportPosition.x < 0 || viewportPosition.x > 1 || viewportPosition.y < 0)
         {
-            CoinCount.instance.RemoveHalfCoins(playerIndex);
-
             targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10f));
             isMovingToCenter = true;
+
+            if (collider.enabled == true)
+            {
+                CoinCount.instance.RemoveHalfCoins(playerIndex);
+            }
         }
     }
 

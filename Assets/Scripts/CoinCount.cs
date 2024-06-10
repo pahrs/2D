@@ -1,17 +1,19 @@
 using UnityEngine;
+using System;
 
-public class CoinManager : MonoBehaviour
+public class CoinCount : MonoBehaviour
 {
-    public static CoinManager instance;
+    public static CoinCount instance;
 
-    public int[] coinCounts = new int[4];
+    public int[] coinCount = new int[4];
+    public static event Action OnCoinsChanged; // Evento para notificar mudanças nas moedas
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -21,10 +23,11 @@ public class CoinManager : MonoBehaviour
 
     public void AddCoins(int playerIndex, int amount)
     {
-        if (playerIndex >= 0 && playerIndex < coinCounts.Length)
+        if (playerIndex >= 0 && playerIndex < coinCount.Length)
         {
-            coinCounts[playerIndex] += amount;
-            Debug.Log("Player " + playerIndex + " Total Coins: " + coinCounts[playerIndex]);
+            coinCount[playerIndex] += amount;
+            Debug.Log("Player " + playerIndex + " Total Coins: " + coinCount[playerIndex]);
+            OnCoinsChanged?.Invoke(); // Dispara o evento
         }
         else
         {

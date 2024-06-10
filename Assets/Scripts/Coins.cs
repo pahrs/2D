@@ -11,7 +11,7 @@ public class Coins : MonoBehaviour
             if (collision.gameObject != null)
             {
             Destroy(collision.gameObject); 
-            CoinManager.instance.AddCoins(playerIndex, 10); 
+            CoinCount.instance.AddCoins(playerIndex, 10); 
             }
         }
     }

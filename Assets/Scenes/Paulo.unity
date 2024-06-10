@@ -1171,8 +1171,8 @@ Transform:
   m_GameObject: {fileID: 117523989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.083, y: 93.8186, z: 12.585597}
-  m_LocalScale: {x: 0.43226555, y: 6.6905475, z: 1}
+  m_LocalPosition: {x: 4.083, y: 96.8409, z: 12.585597}
+  m_LocalScale: {x: 0.43226555, y: 6.8939404, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 870025191}
@@ -4612,6 +4612,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 578561974}
+    - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: dashSound
       value: 
       objectReference: {fileID: 8300000, guid: 6fe5ea3a37159cd4696afd317d1d3e8a, type: 3}
@@ -4714,6 +4718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 578561972}
   - component: {fileID: 578561973}
+  - component: {fileID: 578561974}
   m_Layer: 0
   m_Name: pink_idle
   m_TagString: Untagged
@@ -4788,6 +4793,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &578561974
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578561971}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7a0b39a761629b4ea82bf66083bbb31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &579603475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5169,6 +5195,10 @@ PrefabInstance:
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1529809880}
     - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: dashSound
       value: 
@@ -9706,6 +9736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1267593380}
   - component: {fileID: 1267593381}
+  - component: {fileID: 1267593382}
   m_Layer: 0
   m_Name: yellow_idle
   m_TagString: Untagged
@@ -9780,6 +9811,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1267593382
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267593379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31a7cd5916ea2e949bf51894955c2795, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1269784537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9847,6 +9899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1280412830}
   - component: {fileID: 1280412831}
+  - component: {fileID: 1280412832}
   m_Layer: 0
   m_Name: blue_idle
   m_TagString: Untagged
@@ -9921,6 +9974,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1280412832
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280412829}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7d802e1ca216c74abf272bedad8d44e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1285477134
 GameObject:
   m_ObjectHideFlags: 0
@@ -11761,6 +11835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1529809878}
   - component: {fileID: 1529809879}
+  - component: {fileID: 1529809880}
   m_Layer: 0
   m_Name: green_idle
   m_TagString: Untagged
@@ -11835,6 +11910,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1529809880
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529809877}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 143ec9ec883d43341bcfde7a948375b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1556720206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14749,6 +14845,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1267593382}
+    - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: dashSound
       value: 
       objectReference: {fileID: 8300000, guid: 583fa8eb1a2bcfe48a33a8abfd9265a7, type: 3}
@@ -16939,16 +17039,20 @@ PrefabInstance:
       value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 331987933445022219, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: daa4712ce5959a14bb71271c92a55d49, type: 3}
+    - target: {fileID: 331987933445022219, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.82
+      value: 2.754
       objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.137
+      value: -4.118
       objectReference: {fileID: 0}
     - target: {fileID: 2806147089856365565, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17002,10 +17106,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.019129992
       objectReference: {fileID: 0}
+    - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795840310581606842, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 7.55
+      objectReference: {fileID: 0}
     - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1280412832}
     - target: {fileID: 8244143733848755265, guid: 65fd8dbdb1e629849973e23f7562115f, type: 3}
       propertyPath: dashSound
       value: 

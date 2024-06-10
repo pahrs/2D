@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using Unity.Mathematics;
 using System;
+using UnityEngine.UI;
 
 public class Move : MonoBehaviour
 {
@@ -37,9 +38,7 @@ public class Move : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer tr;
     [SerializeField] private CinemachineImpulseSource impulseSource;
-
-    // Audio
-    [SerializeField] private AudioSource audioSource; // Adicione o AudioSource
+    [SerializeField] private AudioSource audioSource; 
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip dashSound;
 
@@ -91,10 +90,17 @@ public class Move : MonoBehaviour
         {
             return;
         }
-
+        if (IsGrounded())
+        {
+            animator.SetBool("IsJumping", false);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", true);
+        }
         horizontal = moveInput.x;
-
         Flip();
+        
     }
 
     private void FixedUpdate()
@@ -137,7 +143,7 @@ public class Move : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             PlaySound(jumpSound); // Renato som pulo
-        }
+        } 
     }
 
     private void Dash()
@@ -152,7 +158,7 @@ public class Move : MonoBehaviour
     {
         dashAvailable = false;
         isDashing = true;
-        
+        animator.SetBool("IsDashing", true);
         OnDashStarted?.Invoke(this);
 
         float originalGravity = rb.gravityScale;
@@ -167,7 +173,7 @@ public class Move : MonoBehaviour
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
-
+        animator.SetBool("IsDashing", false);
         OnDashEnded?.Invoke(this);
 
         yield return new WaitForSeconds(dashingCooldown);
@@ -186,6 +192,7 @@ public class Move : MonoBehaviour
     {
         downDashAvailable = false;
         isDownDashing = true;
+        animator.SetBool("IsDashing", true);
         rb.velocity = new Vector2(0f, -downDashingPower);
         tr.emitting = true;
         while (!IsGrounded())
@@ -194,6 +201,7 @@ public class Move : MonoBehaviour
         }
         tr.emitting = false;
         isDownDashing = false;
+        animator.SetBool("IsDashing", false);
         downDashAvailable = true;
     }
 

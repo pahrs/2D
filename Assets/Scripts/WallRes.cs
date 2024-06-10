@@ -40,7 +40,7 @@ public class WallRes : MonoBehaviour
         if (isMovingToCenter)
         {
             MoveToCenter();
-            moveSpeed = 5f;
+            moveSpeed = 10f;
             bubbleSpriteRenderer.enabled = true;
         }
         else if (isMovingToRandomDirection)

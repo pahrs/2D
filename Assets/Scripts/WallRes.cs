@@ -23,7 +23,6 @@ public class WallRes : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
         collider = GetComponent<Collider2D>(); 
         bubbleSpriteRenderer = bubble.GetComponent<SpriteRenderer>(); 
-        StartCoroutine(TimeCountdown()); 
     }
 
     public void OnBubble(InputAction.CallbackContext context)
@@ -115,17 +114,6 @@ public class WallRes : MonoBehaviour
         collider.enabled = true; 
         bubbleSpriteRenderer.enabled = false;
         onBubble = false;
-    }
-
-    IEnumerator TimeCountdown()
-    {
-        while (timeRemaining > 0)
-        {
-            yield return new WaitForSeconds(1f);
-            timeRemaining--;
-        }
-
-        this.enabled = false;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

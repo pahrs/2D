@@ -76,7 +76,10 @@ public class Move : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        Dash();
+        if (knockbackTimer<=0)
+        {
+           Dash(); 
+        }
     }
 
     public void OnDownDash(InputAction.CallbackContext context)

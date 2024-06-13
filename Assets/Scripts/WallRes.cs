@@ -9,7 +9,7 @@ public class WallRes : MonoBehaviour
     public int playerIndex; 
     private PlayerInput playerInput;
     private Rigidbody2D rb; 
-    public new Collider2D collider;
+    public Collider2D colliderP;
     private bool isMovingToCenter = false; 
     private bool isMovingToRandomDirection = false;
     private Vector2 targetPosition; 
@@ -21,7 +21,7 @@ public class WallRes : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); 
-        collider = GetComponent<Collider2D>(); 
+        colliderP = GetComponent<Collider2D>(); 
         bubbleSpriteRenderer = bubble.GetComponent<SpriteRenderer>(); 
     }
 
@@ -83,7 +83,7 @@ public class WallRes : MonoBehaviour
         float y = Random.Range(0f, Screen.height);
         targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10f));
         isMovingToRandomDirection = true;
-        collider.enabled = false; 
+        colliderP.enabled = false; 
     }
 
     bool IsVisible()
@@ -111,7 +111,7 @@ public class WallRes : MonoBehaviour
     {
         isMovingToRandomDirection = false;
         rb.gravityScale = 4f; 
-        collider.enabled = true; 
+        colliderP.enabled = true; 
         bubbleSpriteRenderer.enabled = false;
         onBubble = false;
     }

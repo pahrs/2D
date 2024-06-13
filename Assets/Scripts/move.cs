@@ -78,7 +78,8 @@ public class Move : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        horizontal = moveInput.x; 
+        horizontal = Mathf.Abs(moveInput.x) > 0.1f ? Mathf.Sign(moveInput.x) : 0;
+        Debug.Log(horizontal);
     }
 
     public void OnJump(InputAction.CallbackContext context)

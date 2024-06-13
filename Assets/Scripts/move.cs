@@ -96,7 +96,21 @@ public class Move : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        bool grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+        if (!grounded)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, 0.2f);
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.gameObject != gameObject && collider.GetComponent<Move>() != null)
+                {
+                    grounded = true;
+                    break;
+                }
+            }
+        }
+        return grounded;
     }
 
     private void Flip()

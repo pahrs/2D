@@ -159,7 +159,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4473357437720020682}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6ce279d9d6f42ad4d970410a1a254df6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -207,12 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a449683da3c25468916eb3d5195185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  speed: 10
-  jumpingPower: 20
-  dashAvailable: 1
-  dashingPower: 24
-  dashingTime: 0.2
   rb: {fileID: 1699911581248276727}
   groundCheck: {fileID: 975394442682792919}
   groundLayer:
@@ -223,6 +217,12 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   jumpSound: {fileID: 0}
   dashSound: {fileID: 0}
+  animator: {fileID: 0}
+  speed: 10
+  jumpingPower: 20
+  dashAvailable: 1
+  dashingPower: 24
+  dashingTime: 0.2
 --- !u!96 &6815857594235245279
 TrailRenderer:
   serializedVersion: 3

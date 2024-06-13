@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mail;
 using TMPro;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 
 public class timerEnd : MonoBehaviour
 {

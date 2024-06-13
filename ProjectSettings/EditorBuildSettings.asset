@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jogo.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Renato.unity
-    guid: 778d621a452bec04f90872be85276cf3
   - enabled: 1
     path: Assets/Scenes/Placar.unity
     guid: cc88355481d63c8439bce26f75a4227d

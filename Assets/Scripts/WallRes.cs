@@ -1,13 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
 
 public class WallRes : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float cornerSpeedMultiplier = 0.5f; 
     public int playerIndex; 
-    private PlayerInput playerInput;
     private Rigidbody2D rb; 
     public Collider2D colliderP;
     private bool isMovingToCenter = false; 
@@ -84,12 +82,6 @@ public class WallRes : MonoBehaviour
         targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10f));
         isMovingToRandomDirection = true;
         colliderP.enabled = false; 
-    }
-
-    bool IsVisible()
-    {
-        Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
-        return viewportPosition.x >= 0 && viewportPosition.x <= 1 && viewportPosition.y >= 0 && viewportPosition.y <= 1;
     }
 
     void CheckIfOutOfCameraBounds()
